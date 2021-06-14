@@ -3,23 +3,91 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3601191F26776DA1003A46D0 /* sugaXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601191E26776DA1003A46D0 /* sugaXApp.swift */; };
-		3601192126776DA1003A46D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601192026776DA1003A46D0 /* ContentView.swift */; };
+		3601192126776DA1003A46D0 /* sugaX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601192026776DA1003A46D0 /* sugaX.swift */; };
 		3601192326776DA3003A46D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3601192226776DA3003A46D0 /* Assets.xcassets */; };
 		3601192626776DA3003A46D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3601192526776DA3003A46D0 /* Preview Assets.xcassets */; };
+		3601193426776FF7003A46D0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3601193326776FF7003A46D0 /* WidgetKit.framework */; };
+		3601193626776FF7003A46D0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3601193526776FF7003A46D0 /* SwiftUI.framework */; };
+		3601193926776FF7003A46D0 /* sugaW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601193826776FF7003A46D0 /* sugaW.swift */; };
+		3601193C26776FF9003A46D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3601193B26776FF9003A46D0 /* Assets.xcassets */; };
+		3601193E26776FF9003A46D0 /* sugaW.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3601193A26776FF7003A46D0 /* sugaW.intentdefinition */; };
+		3601193F26776FF9003A46D0 /* sugaW.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3601193A26776FF7003A46D0 /* sugaW.intentdefinition */; };
+		3601194226776FF9003A46D0 /* sugaWExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3601193126776FF7003A46D0 /* sugaWExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3601194A26777128003A46D0 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601194926777128003A46D0 /* Modifiers.swift */; };
+		3601194B26777128003A46D0 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601194926777128003A46D0 /* Modifiers.swift */; };
+		3601194D2677733A003A46D0 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601194C2677733A003A46D0 /* UserSettings.swift */; };
+		3601194E2677733A003A46D0 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601194C2677733A003A46D0 /* UserSettings.swift */; };
+		36011950267775CB003A46D0 /* StoreManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601194F267775CB003A46D0 /* StoreManagerClass.swift */; };
+		36011951267775CB003A46D0 /* StoreManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601194F267775CB003A46D0 /* StoreManagerClass.swift */; };
+		36011953267776E6003A46D0 /* WidgetManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36011952267776E6003A46D0 /* WidgetManagerClass.swift */; };
+		36011954267776E6003A46D0 /* WidgetManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36011952267776E6003A46D0 /* WidgetManagerClass.swift */; };
+		3601195B26777803003A46D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3601195E26777803003A46D0 /* Localizable.strings */; };
+		3601195C26777803003A46D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3601195E26777803003A46D0 /* Localizable.strings */; };
+		360119612677788C003A46D0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360119602677788C003A46D0 /* Localization.swift */; };
+		360119622677788C003A46D0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360119602677788C003A46D0 /* Localization.swift */; };
+		3601196526777A5A003A46D0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601196426777A5A003A46D0 /* SettingsView.swift */; };
+		3601196626777A5A003A46D0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601196426777A5A003A46D0 /* SettingsView.swift */; };
+		3601196C2677C7C2003A46D0 /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = 3601196B2677C7C2003A46D0 /* OAuth2 */; };
+		3601196F2677CAFC003A46D0 /* SimpleOAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = 3601196E2677CAFC003A46D0 /* SimpleOAuth2 */; };
+		360119732677D59F003A46D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360119712677D59F003A46D0 /* AppDelegate.swift */; };
+		360119752677D59F003A46D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360119722677D59F003A46D0 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3601194026776FF9003A46D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3601191326776DA1003A46D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3601193026776FF7003A46D0;
+			remoteInfo = sugaWExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3601194626776FF9003A46D0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3601194226776FF9003A46D0 /* sugaWExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3601191B26776DA1003A46D0 /* sugaX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sugaX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3601191E26776DA1003A46D0 /* sugaXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sugaXApp.swift; sourceTree = "<group>"; };
-		3601192026776DA1003A46D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3601192026776DA1003A46D0 /* sugaX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sugaX.swift; sourceTree = "<group>"; };
 		3601192226776DA3003A46D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3601192526776DA3003A46D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3601192726776DA3003A46D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3601193126776FF7003A46D0 /* sugaWExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sugaWExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3601193326776FF7003A46D0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3601193526776FF7003A46D0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		3601193826776FF7003A46D0 /* sugaW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sugaW.swift; sourceTree = "<group>"; };
+		3601193A26776FF7003A46D0 /* sugaW.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = sugaW.intentdefinition; sourceTree = "<group>"; };
+		3601193B26776FF9003A46D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3601193D26776FF9003A46D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		360119472677703A003A46D0 /* sugaX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sugaX.entitlements; sourceTree = "<group>"; };
+		3601194826777068003A46D0 /* sugaWExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sugaWExtension.entitlements; sourceTree = "<group>"; };
+		3601194926777128003A46D0 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		3601194C2677733A003A46D0 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		3601194F267775CB003A46D0 /* StoreManagerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManagerClass.swift; sourceTree = "<group>"; };
+		36011952267776E6003A46D0 /* WidgetManagerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManagerClass.swift; sourceTree = "<group>"; };
+		3601195D26777803003A46D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3601195F26777806003A46D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		360119602677788C003A46D0 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		3601196426777A5A003A46D0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		360119712677D59F003A46D0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		360119722677D59F003A46D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +95,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3601196C2677C7C2003A46D0 /* OAuth2 in Frameworks */,
+				3601196F2677CAFC003A46D0 /* SimpleOAuth2 in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3601192E26776FF7003A46D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3601193626776FF7003A46D0 /* SwiftUI.framework in Frameworks */,
+				3601193426776FF7003A46D0 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,7 +115,10 @@
 		3601191226776DA1003A46D0 = {
 			isa = PBXGroup;
 			children = (
+				3601194826777068003A46D0 /* sugaWExtension.entitlements */,
 				3601191D26776DA1003A46D0 /* sugaX */,
+				3601193726776FF7003A46D0 /* sugaW */,
+				3601193226776FF7003A46D0 /* Frameworks */,
 				3601191C26776DA1003A46D0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				3601191B26776DA1003A46D0 /* sugaX.app */,
+				3601193126776FF7003A46D0 /* sugaWExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,11 +135,18 @@
 		3601191D26776DA1003A46D0 /* sugaX */ = {
 			isa = PBXGroup;
 			children = (
+				360119712677D59F003A46D0 /* AppDelegate.swift */,
+				360119722677D59F003A46D0 /* SceneDelegate.swift */,
 				3601191E26776DA1003A46D0 /* sugaXApp.swift */,
-				3601192026776DA1003A46D0 /* ContentView.swift */,
+				3601192026776DA1003A46D0 /* sugaX.swift */,
+				3601195526777767003A46D0 /* Views */,
 				3601192226776DA3003A46D0 /* Assets.xcassets */,
 				3601192726776DA3003A46D0 /* Info.plist */,
+				360119472677703A003A46D0 /* sugaX.entitlements */,
 				3601192426776DA3003A46D0 /* Preview Content */,
+				360119572677777D003A46D0 /* Modifiers+Models */,
+				3601195626777772003A46D0 /* Classes */,
+				36011963267778A2003A46D0 /* Localization */,
 			);
 			path = sugaX;
 			sourceTree = "<group>";
@@ -69,6 +159,61 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		3601193226776FF7003A46D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3601193326776FF7003A46D0 /* WidgetKit.framework */,
+				3601193526776FF7003A46D0 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3601193726776FF7003A46D0 /* sugaW */ = {
+			isa = PBXGroup;
+			children = (
+				3601193826776FF7003A46D0 /* sugaW.swift */,
+				3601193A26776FF7003A46D0 /* sugaW.intentdefinition */,
+				3601193B26776FF9003A46D0 /* Assets.xcassets */,
+				3601193D26776FF9003A46D0 /* Info.plist */,
+			);
+			path = sugaW;
+			sourceTree = "<group>";
+		};
+		3601195526777767003A46D0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3601196426777A5A003A46D0 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3601195626777772003A46D0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3601194F267775CB003A46D0 /* StoreManagerClass.swift */,
+				36011952267776E6003A46D0 /* WidgetManagerClass.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		360119572677777D003A46D0 /* Modifiers+Models */ = {
+			isa = PBXGroup;
+			children = (
+				3601194926777128003A46D0 /* Modifiers.swift */,
+				3601194C2677733A003A46D0 /* UserSettings.swift */,
+			);
+			path = "Modifiers+Models";
+			sourceTree = "<group>";
+		};
+		36011963267778A2003A46D0 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				360119602677788C003A46D0 /* Localization.swift */,
+				3601195E26777803003A46D0 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,15 +224,38 @@
 				3601191726776DA1003A46D0 /* Sources */,
 				3601191826776DA1003A46D0 /* Frameworks */,
 				3601191926776DA1003A46D0 /* Resources */,
+				3601194626776FF9003A46D0 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3601194126776FF9003A46D0 /* PBXTargetDependency */,
+			);
+			name = sugaX;
+			packageProductDependencies = (
+				3601196B2677C7C2003A46D0 /* OAuth2 */,
+				3601196E2677CAFC003A46D0 /* SimpleOAuth2 */,
+			);
+			productName = sugaX;
+			productReference = 3601191B26776DA1003A46D0 /* sugaX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3601193026776FF7003A46D0 /* sugaWExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3601194326776FF9003A46D0 /* Build configuration list for PBXNativeTarget "sugaWExtension" */;
+			buildPhases = (
+				3601192D26776FF7003A46D0 /* Sources */,
+				3601192E26776FF7003A46D0 /* Frameworks */,
+				3601192F26776FF7003A46D0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = sugaX;
-			productName = sugaX;
-			productReference = 3601191B26776DA1003A46D0 /* sugaX.app */;
-			productType = "com.apple.product-type.application";
+			name = sugaWExtension;
+			productName = sugaWExtension;
+			productReference = 3601193126776FF7003A46D0 /* sugaWExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,6 +269,9 @@
 					3601191A26776DA1003A46D0 = {
 						CreatedOnToolsVersion = 12.5;
 					};
+					3601193026776FF7003A46D0 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 				};
 			};
 			buildConfigurationList = 3601191626776DA1003A46D0 /* Build configuration list for PBXProject "sugaX" */;
@@ -110,13 +281,19 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 3601191226776DA1003A46D0;
+			packageReferences = (
+				3601196A2677C7C2003A46D0 /* XCRemoteSwiftPackageReference "OAuth2" */,
+				3601196D2677CAFC003A46D0 /* XCRemoteSwiftPackageReference "SimpleOAuth2" */,
+			);
 			productRefGroup = 3601191C26776DA1003A46D0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				3601191A26776DA1003A46D0 /* sugaX */,
+				3601193026776FF7003A46D0 /* sugaWExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -127,7 +304,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3601192626776DA3003A46D0 /* Preview Assets.xcassets in Resources */,
+				3601195B26777803003A46D0 /* Localizable.strings in Resources */,
 				3601192326776DA3003A46D0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3601192F26776FF7003A46D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3601193C26776FF9003A46D0 /* Assets.xcassets in Resources */,
+				3601195C26777803003A46D0 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,12 +325,56 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3601192126776DA1003A46D0 /* ContentView.swift in Sources */,
+				3601194A26777128003A46D0 /* Modifiers.swift in Sources */,
+				3601192126776DA1003A46D0 /* sugaX.swift in Sources */,
+				36011950267775CB003A46D0 /* StoreManagerClass.swift in Sources */,
+				3601196526777A5A003A46D0 /* SettingsView.swift in Sources */,
 				3601191F26776DA1003A46D0 /* sugaXApp.swift in Sources */,
+				36011953267776E6003A46D0 /* WidgetManagerClass.swift in Sources */,
+				3601194D2677733A003A46D0 /* UserSettings.swift in Sources */,
+				360119752677D59F003A46D0 /* SceneDelegate.swift in Sources */,
+				360119612677788C003A46D0 /* Localization.swift in Sources */,
+				360119732677D59F003A46D0 /* AppDelegate.swift in Sources */,
+				3601193F26776FF9003A46D0 /* sugaW.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3601192D26776FF7003A46D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36011954267776E6003A46D0 /* WidgetManagerClass.swift in Sources */,
+				3601196626777A5A003A46D0 /* SettingsView.swift in Sources */,
+				3601193E26776FF9003A46D0 /* sugaW.intentdefinition in Sources */,
+				360119622677788C003A46D0 /* Localization.swift in Sources */,
+				3601194E2677733A003A46D0 /* UserSettings.swift in Sources */,
+				36011951267775CB003A46D0 /* StoreManagerClass.swift in Sources */,
+				3601194B26777128003A46D0 /* Modifiers.swift in Sources */,
+				3601193926776FF7003A46D0 /* sugaW.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3601194126776FF9003A46D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3601193026776FF7003A46D0 /* sugaWExtension */;
+			targetProxy = 3601194026776FF9003A46D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3601195E26777803003A46D0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3601195D26777803003A46D0 /* en */,
+				3601195F26777806003A46D0 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3601192826776DA3003A46D0 /* Debug */ = {
@@ -265,9 +496,12 @@
 		3601192B26776DA3003A46D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = sugaX/sugaX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"sugaX/Preview Content\"";
 				DEVELOPMENT_TEAM = APRDSH5Y65;
 				ENABLE_PREVIEWS = YES;
@@ -277,19 +511,23 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.nicolasott.sugaX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		3601192C26776DA3003A46D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = sugaX/sugaX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"sugaX/Preview Content\"";
 				DEVELOPMENT_TEAM = APRDSH5Y65;
 				ENABLE_PREVIEWS = YES;
@@ -299,8 +537,55 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.nicolasott.sugaX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3601194426776FF9003A46D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = sugaWExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = APRDSH5Y65;
+				INFOPLIST_FILE = sugaW/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = de.nicolasott.sugaX.sugaW;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3601194526776FF9003A46D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = sugaWExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = APRDSH5Y65;
+				INFOPLIST_FILE = sugaW/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = de.nicolasott.sugaX.sugaW;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -327,7 +612,48 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		3601194326776FF9003A46D0 /* Build configuration list for PBXNativeTarget "sugaWExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3601194426776FF9003A46D0 /* Debug */,
+				3601194526776FF9003A46D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3601196A2677C7C2003A46D0 /* XCRemoteSwiftPackageReference "OAuth2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/p2/OAuth2.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.1;
+			};
+		};
+		3601196D2677CAFC003A46D0 /* XCRemoteSwiftPackageReference "SimpleOAuth2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hadiidbouk/SimpleOAuth2";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3601196B2677C7C2003A46D0 /* OAuth2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3601196A2677C7C2003A46D0 /* XCRemoteSwiftPackageReference "OAuth2" */;
+			productName = OAuth2;
+		};
+		3601196E2677CAFC003A46D0 /* SimpleOAuth2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3601196D2677CAFC003A46D0 /* XCRemoteSwiftPackageReference "SimpleOAuth2" */;
+			productName = SimpleOAuth2;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3601191326776DA1003A46D0 /* Project object */;
 }
