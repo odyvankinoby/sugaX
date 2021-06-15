@@ -53,7 +53,6 @@ struct sugaX: App {
                 .onOpenURL(perform: { url in
                     print("Callback url: \(url)")
                     if url.host == "callback" {
-                        print("Handing Callback to OAuthSwift: \(String(describing: url.host))")
                         OAuthSwift.handle(url: url)
                     }
                 })

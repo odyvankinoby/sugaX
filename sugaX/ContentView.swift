@@ -45,7 +45,7 @@ struct ContentView: View {
                     Spacer()
                     Button(action: {
                        
-                       
+                        oauth2Login()
                                    
                     }) {
                         HStack {
