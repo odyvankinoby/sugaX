@@ -10,17 +10,62 @@ import StoreKit
 import OAuthSwift
 import Combine
 
+struct DexcomData: Codable {
+    var unit: String
+    var rateUnit: String
+    let egvs: [EgvData]
+}
+
+struct EgvData: Codable, Hashable {
+    var systemTime: String
+    var displayTime: String
+    var value: Int
+    var realtimeValue: Int?
+    var smoothedValue: Int?
+    var status: String?
+    var trend: String?
+    var trendRate: Double?
+}
+
+struct UserData {
+    var time: String
+    var value: Int
+    var trend: String
+    var trendRate: Double
+}
+
+
+
+struct EGView: View {
+    
+    @ObservedObject var settings: UserSettings
+    @State var egvDATA: [EgvData]
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(egvDATA, id: \.self) { item in
+                    Text("Value: \(item.value)")
+                }
+            }
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        .accentColor(Color.prime)
+        .background(Color.prime)
+        .navigationBarTitle(loc_settings, displayMode: .automatic).allowsTightening(true)
+    }
+}
+
 struct ContentView: View {
     
     @ObservedObject var settings: UserSettings
     @Environment (\.presentationMode) var presentationMode
-    
+
     let productIDs = [
         "de.nicolasott.sugaX.premium"
     ]
     @StateObject var storeManager = StoreManager()
     @State var navSelected: Int? = nil
-   
+    
     // create an instance and retain it
     let oauthswift = OAuth2Swift(
         consumerKey:    "ppwU1wNLpASv7Xu1aalj4S4SGnNOuRKS",
@@ -30,81 +75,119 @@ struct ContentView: View {
         responseType:   "code"
     )
     /* PROD
-    let oauthswift = OAuth2Swift(
-        consumerKey:    "ppwU1wNLpASv7Xu1aalj4S4SGnNOuRKS",
-        consumerSecret: "sZLbOl82PGNJZJ6i",
-        authorizeUrl:   "https://api.dexcom.com/v2/oauth2/login",
-        accessTokenUrl: "https://api.dexcom.com/v2/oauth2/token",
-        responseType:   "code"
-    )
-    */
+     let oauthswift = OAuth2Swift(
+     consumerKey:    "ppwU1wNLpASv7Xu1aalj4S4SGnNOuRKS",
+     consumerSecret: "sZLbOl82PGNJZJ6i",
+     authorizeUrl:   "https://api.dexcom.com/v2/oauth2/login",
+     accessTokenUrl: "https://api.dexcom.com/v2/oauth2/token",
+     responseType:   "code"
+     )
+     */
     @State var hasError = false
     @State var errorMessage = ""
     @State var access_token = ""
     @State var responseDataString = ""
-    @State private var results = [Evgs]()
-
+   
+    @State var userData = [
+        UserData(time: "--",
+        value: 0,
+        trend: "--",
+        trendRate: 0.0)]
+    
+    @State private var dexDataEmpty = DexcomData.self
+    @State private var dexdataJSON = [DexcomData]()
+    @State private var dexdataRESULT = [DexcomData]()
+    @State private var egvDATA = [EgvData]()
+  
+    
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 10) {
                 ScrollView {
-                HStack {
-                    //Spacer()
-                    Text("Welcome SugaX Pal!").font(.title).foregroundColor(.primeInverted)
-                    Spacer()
-                }
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        oauth2Login()
-                    }) {
-                        HStack {
-                            Image(systemName: "lock").foregroundColor(Color.primeInverted)
-                            Text("Login")
-                           
-                        }.padding().background(Color.white)
-                    }.foregroundColor(.primeInverted)
-                    Spacer()
-                }
-               
-                    Text("Values: ").foregroundColor(.white)
-                    Text("Value.count: \(results.count)").foregroundColor(.white)
-                    /*
-                    List(results, id: \.id) { item in
-                               VStack(alignment: .leading) {
-                                   Text("\(item.value)")
-                                    .font(.headline).foregroundColor(.white)
-                                  
-                               }
-                           }
-                    */
-                if hasError {
-                    Spacer()
-                    Spacer()
+                    HStack {
+                        //Spacer()
+                        Text("Welcome SugaX Pal!").font(.title).foregroundColor(.primeInverted)
+                        Spacer()
+                    }
                     HStack {
                         Spacer()
+                        Button(action: {
+                            oauth2Login()
+                        }) {
+                            HStack {
+                                Image(systemName: "lock").foregroundColor(Color.primeInverted)
+                                Text("Login")
+                                
+                            }.padding().background(Color.white)
+                        }.foregroundColor(.primeInverted)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            parseJSON2()
+                        }) {
+                            HStack {
+                                Image(systemName: "globe").foregroundColor(Color.primeInverted)
+                                Text("Parse")
+                                Text("\(egvDATA.count)")
+                                
+                            }.padding().background(Color.white)
+                        }.foregroundColor(.primeInverted)
                         
-                            Image(systemName: "xmark").foregroundColor(Color.red)
-                        VStack {
-                            Text("ERROR").foregroundColor(.primeInverted)
-                            Text(errorMessage).foregroundColor(.primeInverted)
+                        
+                        
+                        
+                        Spacer()
+                    }
+                    VStack(alignment: .center) {
+                        HStack(alignment: .bottom) {
+                            Text("\(userData[userData.count-1].value)").font(.title).bold().foregroundColor(.white).padding()
+                            Text("\(userData[userData.count-1].trend)").font(.headline).bold().foregroundColor(.white).padding()
+                            Text("\(userData[userData.count-1].trendRate)").font(.headline).foregroundColor(.white).padding()
+                            /*
+                            arrow.up
+                            arrow.up.right
+                            arrow.right
+                            arrow.down.right
+                            arrow.down
+ */
                         }
-                    }.padding().background(Color.white)
+                        Text("\(userData[userData.count-1].time)").font(.title).bold().foregroundColor(.white).padding()
+                        
+                    }
                   
-                }
-                
-                
-                
-                NavigationLink(destination: SettingsView(settings: settings, storeManager: storeManager).accentColor(Color.prime)
-                                .edgesIgnoringSafeArea(.bottom), tag: 1, selection: $navSelected)
-                {
-                    EmptyView()
-                }.isDetailLink(false)
-                
-                NavigationLink(destination: EmptyView())
-                {
-                    EmptyView()
-                }
+                    if hasError {
+                        Spacer()
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            
+                            Image(systemName: "xmark").foregroundColor(Color.red)
+                            VStack {
+                                Text("ERROR").foregroundColor(.primeInverted)
+                                Text(errorMessage).foregroundColor(.primeInverted)
+                            }
+                        }.padding().background(Color.white)
+                        
+                    }
+                    
+                    NavigationLink(destination: EGView(settings: settings, egvDATA: egvDATA).accentColor(Color.prime).edgesIgnoringSafeArea(.bottom), tag: 11, selection: $navSelected)
+                    {
+                        EmptyView()
+                    }.isDetailLink(false)
+                    
+                    NavigationLink(destination: SettingsView(settings: settings, storeManager: storeManager).accentColor(Color.prime)
+                                    .edgesIgnoringSafeArea(.bottom), tag: 1, selection: $navSelected)
+                    {
+                        EmptyView()
+                    }.isDetailLink(false)
+                    
+                    NavigationLink(destination: EmptyView())
+                    {
+                        EmptyView()
+                    }
                 }
             }
             .background(Color.prime).edgesIgnoringSafeArea(.bottom)
@@ -139,12 +222,51 @@ struct ContentView: View {
         storeManager.getProducts(productIDs: productIDs)
         //settings.purchased = true
         UserDefaults(suiteName: "group.de.nicolasott.sugaX")!.set(settings.purchased, forKey: "purchased")
+    }
+    
+    func parseJSON() -> [EgvData]{
+        let url = Bundle.main.url(forResource: "dexdata", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        let decoder = JSONDecoder()
         
-        // FIRST START or UPDATE
+        do {
+            //let responseJSON = try?JSONEncoder().encode(responseData)
+            let products = try decoder.decode([DexcomData].self, from: data)
+            return products[0].egvs
+        } catch DecodingError.keyNotFound(let key, let context) {
+            Swift.print("could not find key \(key) in JSON: \(context.debugDescription)")
+        } catch DecodingError.valueNotFound(let type, let context) {
+            Swift.print("could not find type \(type) in JSON: \(context.debugDescription)")
+        } catch DecodingError.typeMismatch(let type, let context) {
+            Swift.print("type mismatch for type \(type) in JSON: \(context.debugDescription)")
+        } catch DecodingError.dataCorrupted(let context) {
+            Swift.print("data found to be corrupted in JSON: \(context.debugDescription)")
+        } catch let error as NSError {
+            NSLog("Error in read(from:ofType:) domain= \(error.domain), description= \(error.localizedDescription)")
+        }
+        
+        return [EgvData]()
+    }
+    
+    func parseJSON2() {
+        let url = Bundle.main.url(forResource: "dexdata", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        let decoder = JSONDecoder()
+
+        let dexdata = try? decoder.decode(DexcomData.self, from: data)
+        //print(dexdata.egvs.count)
+        egvDATA = dexdata!.egvs
+        let cnt = dexdata!.egvs.count
+        
+        let newData = UserData(
+            time: dexdata!.egvs[cnt-1].displayTime,
+            value: dexdata!.egvs[cnt-1].value,
+            trend: dexdata!.egvs[cnt-1].trend ?? "?",
+            trendRate: dexdata!.egvs[cnt-1].trendRate ?? 0.0)
+        userData.append(newData)
       
     }
     
-   
     func oauth2Login() {
         hasError = false
         OAuth2Swift.setLogLevel(.trace)
@@ -167,90 +289,111 @@ struct ContentView: View {
             }
         }
     }
-
+    
     // SB User5
     /*
-    Optional("{\"calibrations\":null,\"egvs\":{\"start\":{\"systemTime\":\"2018-02-22T08:18:10\",\"displayTime\":\"2018-02-22T00:18:10\"},\"end\":{\"systemTime\":\"2021-06-16T08:28:10\",\"displayTime\":\"2021-06-16T00:28:10\"}},\"events\":{\"start\":{\"systemTime\":\"2018-02-22T16:08:19.514\",\"displayTime\":\"2018-02-22T08:08:19.514\"},\"end\":{\"systemTime\":\"2021-06-16T01:53:46.457\",\"displayTime\":\"2021-06-15T17:53:46.457\"}}}")
-
-    */
+     Optional("{\"calibrations\":null,\"egvs\":{\"start\":{\"systemTime\":\"2018-02-22T08:18:10\",\"displayTime\":\"2018-02-22T00:18:10\"},\"end\":{\"systemTime\":\"2021-06-16T08:28:10\",\"displayTime\":\"2021-06-16T00:28:10\"}},\"events\":{\"start\":{\"systemTime\":\"2018-02-22T16:08:19.514\",\"displayTime\":\"2018-02-22T08:08:19.514\"},\"end\":{\"systemTime\":\"2021-06-16T01:53:46.457\",\"displayTime\":\"2021-06-15T17:53:46.457\"}}}")
+     
+     */
     
     
     
     func getEgvs(token: String) {
-      
+        
         let headers = [
-          "authorization": "Bearer \(token)"
+            "authorization": "Bearer \(token)"
         ]
         let dataRange =  NSMutableURLRequest(url: NSURL(string: "https://sandbox-api.dexcom.com/v2/users/self/dataRange")! as URL,
                                              cachePolicy: .useProtocolCachePolicy,
-                                         timeoutInterval: 10.0)
+                                             timeoutInterval: 10.0)
         dataRange.httpMethod = "GET"
         dataRange.allHTTPHeaderFields = headers
         
         let request = NSMutableURLRequest(url: NSURL(string: "https://sandbox-api.dexcom.com/v2/users/self/egvs?startDate=2018-02-22T00:18:10&endDate=2018-02-23T00:18:10")! as URL,
-              cachePolicy: .useProtocolCachePolicy,
-          timeoutInterval: 10.0)
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
-
+        
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-          if (error != nil) {
-            hasError = true
-            errorMessage = error!.localizedDescription
-            print(error)
-          } else {
-            
-            let httpResponse = response as? HTTPURLResponse
-            print("Status = \(httpResponse?.statusCode)")
-            
-            if (data != nil){
-                if let decodedResponse = try? JSONDecoder().decode(DexcomData.self, from: data!) {
-                    self.results = decodedResponse.evgs
-                    print(results.count)
-                    /*DispatchQueue.main.async {
-                        // update our UI
-                        self.results = decodedResponse.evgs
-                        print(results.count)
+            if (error != nil) {
+                hasError = true
+                errorMessage = error!.localizedDescription
+                //print(error!.localizedDescription)
+            } else {
+                
+                let httpResponse = response as? HTTPURLResponse
+                //print("Status = \(httpResponse?.statusCode)")
+                
+                if (data != nil){
+                    let responseData:String! = String(data: data!, encoding: String.Encoding.utf8)
+                    responseDataString = responseData ?? ""
+                    print(responseDataString)
+                    do {
+                        //let responseJSON = try?JSONEncoder().encode(responseData)
+                        let myData = try JSONDecoder().decode([DexcomData].self, from: data!)
+                        self.dexdataRESULT = myData
+                    } catch DecodingError.keyNotFound(let key, let context) {
+                        Swift.print("could not find key \(key) in JSON: \(context.debugDescription)")
+                    } catch DecodingError.valueNotFound(let type, let context) {
+                        Swift.print("could not find type \(type) in JSON: \(context.debugDescription)")
+                    } catch DecodingError.typeMismatch(let type, let context) {
+                        Swift.print("type mismatch for type \(type) in JSON: \(context.debugDescription)")
+                    } catch DecodingError.dataCorrupted(let context) {
+                        Swift.print("data found to be corrupted in JSON: \(context.debugDescription)")
+                    } catch let error as NSError {
+                        NSLog("Error in read(from:ofType:) domain= \(error.domain), description= \(error.localizedDescription)")
                     }
-                     */
-                    // everything is good, so we can exit
-                    //return
+                   print("Count: \(dexdataRESULT.count)")
+                }
+                
+                if (data != nil){
+                    //let responseData:String! = String(data: data!, encoding: String.Encoding.utf8)
+                    //responseDataString = responseData ?? ""
+                    //print(responseDataString)
+                    do {
+                        //let responseJSON = try?JSONEncoder().encode(responseData)
+                        let myData2 = try JSONDecoder().decode([EgvData].self, from: data!)
+                        self.egvDATA = myData2
+                    } catch DecodingError.keyNotFound(let key, let context) {
+                        Swift.print("could not find key \(key) in JSON: \(context.debugDescription)")
+                    } catch DecodingError.valueNotFound(let type, let context) {
+                        Swift.print("could not find type \(type) in JSON: \(context.debugDescription)")
+                    } catch DecodingError.typeMismatch(let type, let context) {
+                        Swift.print("type mismatch for type \(type) in JSON: \(context.debugDescription)")
+                    } catch DecodingError.dataCorrupted(let context) {
+                        Swift.print("data found to be corrupted in JSON: \(context.debugDescription)")
+                    } catch let error as NSError {
+                        NSLog("Error in read(from:ofType:) domain= \(error.domain), description= \(error.localizedDescription)")
+                    }
+                   print("Count: \(egvDATA.count)")
                 }
             }
-
-            if (data != nil){
-                let responseData:String! = String(data: data!, encoding: String.Encoding.utf8)
-                responseDataString = responseData ?? ""
-                print(responseDataString)
-                /*let sample = try decoder.decode(DexcomData.self, from: responseData)
-                print(sample)*/
-                }
-          }
         })
-
+        
         dataTask.resume()
         
         /*
-        oauthswift.client.request("https://api.dexcom.com/v2/users/self/egvs?startDate=2017-06-16T15:30:00&endDate=2017-06-16T15:45:00", .GET,
-              parameters: , headers: headers,
-              completionHandler: { ...
-        
-        
-                oauthswift.client.get("https://api.linkedin.com/v1/people/~") { result in
-            switch result {
-            case .success(let response):
-                let dataString = response.string
-                print(dataString)
-            case .failure(let error):
-                print(error)
-            }
-        }
-        // same with request method
-        oauthswift.client.request("https://api.linkedin.com/v1/people/~", .GET,
-              parameters: [:], headers: [:],
-              completionHandler: { ...
- */
+         oauthswift.client.request("https://api.dexcom.com/v2/users/self/egvs?startDate=2017-06-16T15:30:00&endDate=2017-06-16T15:45:00", .GET,
+         parameters: , headers: headers,
+         completionHandler: { ...
+         
+         
+         oauthswift.client.get("https://api.linkedin.com/v1/people/~") { result in
+         switch result {
+         case .success(let response):
+         let dataString = response.string
+         print(dataString)
+         case .failure(let error):
+         print(error)
+         }
+         }
+         // same with request method
+         oauthswift.client.request("https://api.linkedin.com/v1/people/~", .GET,
+         parameters: [:], headers: [:],
+         completionHandler: { ...
+         */
     }
     
     /*
@@ -296,19 +439,4 @@ struct ContentView: View {
 }
 
 
-public struct DexcomData: Codable {
-    var unit: String
-    var rateUnit: String
-    var evgs: [Evgs]
-}
 
-public struct Evgs: Codable {
-    var systemTime: Date
-    var displayTime: Date
-    var value: Int
-    var realtimeValue: Int
-    var smoothedValue: Int
-    var status: String
-    var trend: String
-    var trendRate: Int
-}

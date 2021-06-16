@@ -31,6 +31,7 @@
 		360119622677788C003A46D0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360119602677788C003A46D0 /* Localization.swift */; };
 		3601196526777A5A003A46D0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601196426777A5A003A46D0 /* SettingsView.swift */; };
 		3601196626777A5A003A46D0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3601196426777A5A003A46D0 /* SettingsView.swift */; };
+		36693FE3267A456B0082FE18 /* dexdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 36693FE2267A456B0082FE18 /* dexdata.json */; };
 		369049DC267907D600C34A00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369049DB267907D600C34A00 /* ContentView.swift */; };
 		369049DF2679096F00C34A00 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 369049DE2679096F00C34A00 /* OAuthSwift */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		3601195F26777806003A46D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		360119602677788C003A46D0 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		3601196426777A5A003A46D0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		36693FE2267A456B0082FE18 /* dexdata.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dexdata.json; sourceTree = "<group>"; };
 		369049DB267907D600C34A00 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,8 +131,8 @@
 		3601191D26776DA1003A46D0 /* sugaX */ = {
 			isa = PBXGroup;
 			children = (
-				369049DB267907D600C34A00 /* ContentView.swift */,
 				3601192026776DA1003A46D0 /* sugaX.swift */,
+				369049DB267907D600C34A00 /* ContentView.swift */,
 				3601195526777767003A46D0 /* Views */,
 				3601192226776DA3003A46D0 /* Assets.xcassets */,
 				3601192726776DA3003A46D0 /* Info.plist */,
@@ -139,6 +141,7 @@
 				360119572677777D003A46D0 /* Modifiers+Models */,
 				3601195626777772003A46D0 /* Classes */,
 				36011963267778A2003A46D0 /* Localization */,
+				36693FE2267A456B0082FE18 /* dexdata.json */,
 			);
 			path = sugaX;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				3601192626776DA3003A46D0 /* Preview Assets.xcassets in Resources */,
 				3601195B26777803003A46D0 /* Localizable.strings in Resources */,
 				3601192326776DA3003A46D0 /* Assets.xcassets in Resources */,
+				36693FE3267A456B0082FE18 /* dexdata.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +493,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = sugaX/sugaX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"sugaX/Preview Content\"";
 				DEVELOPMENT_TEAM = APRDSH5Y65;
 				ENABLE_PREVIEWS = YES;
@@ -515,7 +519,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = sugaX/sugaX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"sugaX/Preview Content\"";
 				DEVELOPMENT_TEAM = APRDSH5Y65;
 				ENABLE_PREVIEWS = YES;
@@ -540,7 +544,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = sugaWExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = APRDSH5Y65;
 				INFOPLIST_FILE = sugaW/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -564,7 +568,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = sugaWExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = APRDSH5Y65;
 				INFOPLIST_FILE = sugaW/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
