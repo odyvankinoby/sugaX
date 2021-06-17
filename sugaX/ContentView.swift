@@ -39,6 +39,7 @@ struct UserData {
 struct EGView: View {
     
     @ObservedObject var settings: UserSettings
+     
     @State var egvDATA: [EgvData]
     var body: some View {
         ScrollView {
@@ -59,14 +60,15 @@ struct ContentView: View {
     
     @ObservedObject var settings: UserSettings
     @Environment (\.presentationMode) var presentationMode
-
+    @ObservedObject private var viewModel = SignInViewModel()
+    
     let productIDs = [
         "de.nicolasott.sugaX.premium"
     ]
+    
     @StateObject var storeManager = StoreManager()
     @State var navSelected: Int? = nil
-    
-    // create an instance and retain it
+   
     let oauthswift = OAuth2Swift(
         consumerKey:    "ppwU1wNLpASv7Xu1aalj4S4SGnNOuRKS",
         consumerSecret: "sZLbOl82PGNJZJ6i",
@@ -74,15 +76,7 @@ struct ContentView: View {
         accessTokenUrl: "https://sandbox-api.dexcom.com/v2/oauth2/token",
         responseType:   "code"
     )
-    /* PROD
-     let oauthswift = OAuth2Swift(
-     consumerKey:    "ppwU1wNLpASv7Xu1aalj4S4SGnNOuRKS",
-     consumerSecret: "sZLbOl82PGNJZJ6i",
-     authorizeUrl:   "https://api.dexcom.com/v2/oauth2/login",
-     accessTokenUrl: "https://api.dexcom.com/v2/oauth2/token",
-     responseType:   "code"
-     )
-     */
+   
     @State var hasError = false
     @State var errorMessage = ""
     @State var access_token = ""
@@ -110,6 +104,23 @@ struct ContentView: View {
                         Text("Welcome SugaX Pal!").font(.title).foregroundColor(.primeInverted)
                         Spacer()
                     }
+                    
+                    if viewModel.isLoading {
+                      ProgressView()
+                    } else {
+                      //Button(action: { viewModel.signInTapped() }, label: {
+                        Button(action: { viewModel.signInWithOAuthSwiftTapped() }, label: {
+                        //signInWithOAuthSwiftTapped
+                        Text("Sign In")
+                          .font(Font.system(size: 24).weight(.semibold))
+                            .foregroundColor(.primeInverted)
+                          .padding(.horizontal, 50)
+                          .padding(.vertical, 8)
+                      })
+                      .background(Color.white)
+                    }
+                    
+                    /*
                     HStack {
                         Spacer()
                         Button(action: {
@@ -122,7 +133,7 @@ struct ContentView: View {
                             }.padding().background(Color.white)
                         }.foregroundColor(.primeInverted)
                         Spacer()
-                    }
+                    } */
                     HStack {
                         Spacer()
                         Button(action: {
@@ -216,7 +227,7 @@ struct ContentView: View {
     }
     
     func onAppear() {
-        
+        viewModel.appeared()
         // IAP
         SKPaymentQueue.default().add(storeManager)
         storeManager.getProducts(productIDs: productIDs)
@@ -268,10 +279,13 @@ struct ContentView: View {
     }
     
     func oauth2Login() {
+     
+        // OAuthSwift
         hasError = false
         OAuth2Swift.setLogLevel(.trace)
+        
         let handle = oauthswift.authorize(
-            withCallbackURL: "sugaX://callback/",
+            withCallbackURL: "sugaX://callback/oauth",
             scope: "offline_access",
             state:"State01") { result in
             switch result {
@@ -288,16 +302,9 @@ struct ContentView: View {
                 print(error.localizedDescription)
             }
         }
+        
     }
-    
-    // SB User5
-    /*
-     Optional("{\"calibrations\":null,\"egvs\":{\"start\":{\"systemTime\":\"2018-02-22T08:18:10\",\"displayTime\":\"2018-02-22T00:18:10\"},\"end\":{\"systemTime\":\"2021-06-16T08:28:10\",\"displayTime\":\"2021-06-16T00:28:10\"}},\"events\":{\"start\":{\"systemTime\":\"2018-02-22T16:08:19.514\",\"displayTime\":\"2018-02-22T08:08:19.514\"},\"end\":{\"systemTime\":\"2021-06-16T01:53:46.457\",\"displayTime\":\"2021-06-15T17:53:46.457\"}}}")
-     
-     */
-    
-    
-    
+
     func getEgvs(token: String) {
         
         let headers = [

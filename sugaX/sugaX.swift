@@ -10,7 +10,9 @@ import OAuthSwift
 
 @main
 struct sugaX: App {
+    
     let coloredNavAppearance = UINavigationBarAppearance()
+    
     init() {
         coloredNavAppearance.configureWithOpaqueBackground()
         coloredNavAppearance.backgroundColor = UIColor(Color.primeInverted)
@@ -44,19 +46,19 @@ struct sugaX: App {
     
     
     @ObservedObject var settings = UserSettings()
-
+  
     var body: some Scene {
         WindowGroup {
             ContentView(settings: settings)
                 .accentColor(Color.prime)
                 .edgesIgnoringSafeArea(.bottom)
                 .onOpenURL(perform: { url in
-                    print("Callback url: \(url)")
+                    /* OAuthSwift */
                     if url.host == "callback" {
                         OAuthSwift.handle(url: url)
                     }
                 })
-                
+               
         }
     }
 }

@@ -34,6 +34,15 @@
 		36693FE3267A456B0082FE18 /* dexdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 36693FE2267A456B0082FE18 /* dexdata.json */; };
 		369049DC267907D600C34A00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369049DB267907D600C34A00 /* ContentView.swift */; };
 		369049DF2679096F00C34A00 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 369049DE2679096F00C34A00 /* OAuthSwift */; };
+		36B4F264267B35F900179169 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B4F263267B35F900179169 /* SignInView.swift */; };
+		36B4F267267B4D0B00179169 /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = 36B4F266267B4D0B00179169 /* OAuth2 */; };
+		36B4F26D267B8EF700179169 /* RepositoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B4F26C267B8EF600179169 /* RepositoriesView.swift */; };
+		36B4F274267B901400179169 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B4F26E267B901400179169 /* NetworkRequest.swift */; };
+		36B4F275267B901400179169 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B4F26F267B901400179169 /* Repository.swift */; };
+		36B4F276267B901400179169 /* NetworkRequest+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B4F270267B901400179169 /* NetworkRequest+User.swift */; };
+		36B4F277267B901400179169 /* RepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B4F271267B901400179169 /* RepositoriesViewModel.swift */; };
+		36B4F278267B901400179169 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B4F272267B901400179169 /* User.swift */; };
+		36B4F279267B901400179169 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B4F273267B901400179169 /* SignInViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +94,14 @@
 		3601196426777A5A003A46D0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		36693FE2267A456B0082FE18 /* dexdata.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dexdata.json; sourceTree = "<group>"; };
 		369049DB267907D600C34A00 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		36B4F263267B35F900179169 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		36B4F26C267B8EF600179169 /* RepositoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesView.swift; sourceTree = "<group>"; };
+		36B4F26E267B901400179169 /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		36B4F26F267B901400179169 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		36B4F270267B901400179169 /* NetworkRequest+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkRequest+User.swift"; sourceTree = "<group>"; };
+		36B4F271267B901400179169 /* RepositoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesViewModel.swift; sourceTree = "<group>"; };
+		36B4F272267B901400179169 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		36B4F273267B901400179169 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				369049DF2679096F00C34A00 /* OAuthSwift in Frameworks */,
+				36B4F267267B4D0B00179169 /* OAuth2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +195,9 @@
 		3601195526777767003A46D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				36B4F26C267B8EF600179169 /* RepositoriesView.swift */,
 				3601196426777A5A003A46D0 /* SettingsView.swift */,
+				36B4F263267B35F900179169 /* SignInView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +214,12 @@
 		360119572677777D003A46D0 /* Modifiers+Models */ = {
 			isa = PBXGroup;
 			children = (
+				36B4F26E267B901400179169 /* NetworkRequest.swift */,
+				36B4F270267B901400179169 /* NetworkRequest+User.swift */,
+				36B4F271267B901400179169 /* RepositoriesViewModel.swift */,
+				36B4F26F267B901400179169 /* Repository.swift */,
+				36B4F273267B901400179169 /* SignInViewModel.swift */,
+				36B4F272267B901400179169 /* User.swift */,
 				3601194926777128003A46D0 /* Modifiers.swift */,
 				3601194C2677733A003A46D0 /* UserSettings.swift */,
 			);
@@ -229,6 +255,7 @@
 			name = sugaX;
 			packageProductDependencies = (
 				369049DE2679096F00C34A00 /* OAuthSwift */,
+				36B4F266267B4D0B00179169 /* OAuth2 */,
 			);
 			productName = sugaX;
 			productReference = 3601191B26776DA1003A46D0 /* sugaX.app */;
@@ -280,6 +307,7 @@
 			mainGroup = 3601191226776DA1003A46D0;
 			packageReferences = (
 				369049DD2679096F00C34A00 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				36B4F265267B4D0B00179169 /* XCRemoteSwiftPackageReference "OAuth2" */,
 			);
 			productRefGroup = 3601191C26776DA1003A46D0 /* Products */;
 			projectDirPath = "";
@@ -322,11 +350,19 @@
 				3601194A26777128003A46D0 /* Modifiers.swift in Sources */,
 				3601192126776DA1003A46D0 /* sugaX.swift in Sources */,
 				369049DC267907D600C34A00 /* ContentView.swift in Sources */,
+				36B4F275267B901400179169 /* Repository.swift in Sources */,
+				36B4F278267B901400179169 /* User.swift in Sources */,
 				36011950267775CB003A46D0 /* StoreManagerClass.swift in Sources */,
+				36B4F264267B35F900179169 /* SignInView.swift in Sources */,
 				3601196526777A5A003A46D0 /* SettingsView.swift in Sources */,
 				36011953267776E6003A46D0 /* WidgetManagerClass.swift in Sources */,
+				36B4F279267B901400179169 /* SignInViewModel.swift in Sources */,
+				36B4F26D267B8EF700179169 /* RepositoriesView.swift in Sources */,
+				36B4F276267B901400179169 /* NetworkRequest+User.swift in Sources */,
 				3601194D2677733A003A46D0 /* UserSettings.swift in Sources */,
 				360119612677788C003A46D0 /* Localization.swift in Sources */,
+				36B4F274267B901400179169 /* NetworkRequest.swift in Sources */,
+				36B4F277267B901400179169 /* RepositoriesViewModel.swift in Sources */,
 				3601193F26776FF9003A46D0 /* sugaW.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,6 +662,14 @@
 				minimumVersion = 2.2.0;
 			};
 		};
+		36B4F265267B4D0B00179169 /* XCRemoteSwiftPackageReference "OAuth2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/p2/OAuth2.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -633,6 +677,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 369049DD2679096F00C34A00 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
 			productName = OAuthSwift;
+		};
+		36B4F266267B4D0B00179169 /* OAuth2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36B4F265267B4D0B00179169 /* XCRemoteSwiftPackageReference "OAuth2" */;
+			productName = OAuth2;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
