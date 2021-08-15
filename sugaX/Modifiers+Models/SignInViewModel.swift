@@ -38,11 +38,19 @@ class SignInViewModel: NSObject, ObservableObject {
     @Published var isShowingRepositoriesView = false
     @Published private(set) var isLoading = false
     
-    let oauthswift = OAuth2Swift(
+    let oauthswiftDev = OAuth2Swift(
         consumerKey:    "ppwU1wNLpASv7Xu1aalj4S4SGnNOuRKS",
         consumerSecret: "sZLbOl82PGNJZJ6i",
         authorizeUrl:   "https://sandbox-api.dexcom.com/v2/oauth2/login",
         accessTokenUrl: "https://sandbox-api.dexcom.com/v2/oauth2/token",
+        responseType:   "code"
+    )
+    
+    let oauthswift = OAuth2Swift(
+        consumerKey:    "ppwU1wNLpASv7Xu1aalj4S4SGnNOuRKS",
+        consumerSecret: "sZLbOl82PGNJZJ6i",
+        authorizeUrl:   "https://api.dexcom.com/v2/oauth2/login",
+        accessTokenUrl: "https://api.dexcom.com/v2/oauth2/token",
         responseType:   "code"
     )
     
@@ -149,6 +157,7 @@ class SignInViewModel: NSObject, ObservableObject {
             }
     }
 }
+
 
 extension SignInViewModel: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession)

@@ -70,13 +70,23 @@ struct ContentView: View {
     @State var navSelected: Int? = nil
    
     let oauthswift = OAuth2Swift(
-        consumerKey:    "ppwU1wNLpASv7Xu1aalj4S4SGnNOuRKS",
-        consumerSecret: "sZLbOl82PGNJZJ6i",
+        consumerKey:    "", // <= ADD
+        consumerSecret: "", // <= ADD
         authorizeUrl:   "https://sandbox-api.dexcom.com/v2/oauth2/login",
         accessTokenUrl: "https://sandbox-api.dexcom.com/v2/oauth2/token",
         responseType:   "code"
     )
-   
+    
+    /* PROD
+    let oauthswift = OAuth2Swift(
+        consumerKey:    "",
+        consumerSecret: "",
+        authorizeUrl:   "https://api.dexcom.com/v2/oauth2/login",
+        accessTokenUrl: "https://api.dexcom.com/v2/oauth2/token",
+        responseType:   "code"
+    )
+    */
+    
     @State var hasError = false
     @State var errorMessage = ""
     @State var access_token = ""
@@ -105,22 +115,6 @@ struct ContentView: View {
                         Spacer()
                     }
                     
-                    if viewModel.isLoading {
-                      ProgressView()
-                    } else {
-                      //Button(action: { viewModel.signInTapped() }, label: {
-                        Button(action: { viewModel.signInWithOAuthSwiftTapped() }, label: {
-                        //signInWithOAuthSwiftTapped
-                        Text("Sign In")
-                          .font(Font.system(size: 24).weight(.semibold))
-                            .foregroundColor(.primeInverted)
-                          .padding(.horizontal, 50)
-                          .padding(.vertical, 8)
-                      })
-                      .background(Color.white)
-                    }
-                    
-                    /*
                     HStack {
                         Spacer()
                         Button(action: {
@@ -133,7 +127,7 @@ struct ContentView: View {
                             }.padding().background(Color.white)
                         }.foregroundColor(.primeInverted)
                         Spacer()
-                    } */
+                    }
                     HStack {
                         Spacer()
                         Button(action: {
@@ -157,13 +151,7 @@ struct ContentView: View {
                             Text("\(userData[userData.count-1].value)").font(.title).bold().foregroundColor(.white).padding()
                             Text("\(userData[userData.count-1].trend)").font(.headline).bold().foregroundColor(.white).padding()
                             Text("\(userData[userData.count-1].trendRate)").font(.headline).foregroundColor(.white).padding()
-                            /*
-                            arrow.up
-                            arrow.up.right
-                            arrow.right
-                            arrow.down.right
-                            arrow.down
- */
+                           
                         }
                         Text("\(userData[userData.count-1].time)").font(.title).bold().foregroundColor(.white).padding()
                         
@@ -313,12 +301,25 @@ struct ContentView: View {
         let dataRange =  NSMutableURLRequest(url: NSURL(string: "https://sandbox-api.dexcom.com/v2/users/self/dataRange")! as URL,
                                              cachePolicy: .useProtocolCachePolicy,
                                              timeoutInterval: 10.0)
+        /* PROD
+        let dataRange =  NSMutableURLRequest(url: NSURL(string: "https://api.dexcom.com/v2/users/self/dataRange")! as URL,
+                                             cachePolicy: .useProtocolCachePolicy,
+                                             timeoutInterval: 10.0)
+        */
+        
         dataRange.httpMethod = "GET"
         dataRange.allHTTPHeaderFields = headers
         
         let request = NSMutableURLRequest(url: NSURL(string: "https://sandbox-api.dexcom.com/v2/users/self/egvs?startDate=2018-02-22T00:18:10&endDate=2018-02-23T00:18:10")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
+        
+        /* PROD
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.dexcom.com/v2/users/self/egvs?startDate=2021-06-22T10:00:00&endDate=2021-06-22T10:30:00")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        */
+        
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
         

@@ -33,18 +33,6 @@ struct sugaX: App {
         UITableView.appearance().backgroundColor = UIColor(Color.prime)
     }
     
-    /*
-        "client_id": "ppwU1wNLpASv7Xu1aalj4S4SGnNOuRKS",
-        "client_secret": "sZLbOl82PGNJZJ6i",
-        "authorize_uri": "https://sandbox-api.dexcom.com/v2/oauth2/login",
-        "token_uri": "https://sandbox-api.dexcom.com/v2/oauth2/token",
-        "redirect_uris": ["sugaX://oauth/callback"],   // register your own "myapp" scheme in Info.plist
-        "scope": "offline_access",
-        "keychain": false,         // if you DON'T want keychain integration
-     "https://sandbox-api.dexcom.com/v2/users/self/devices?startDate=2017-06-16T08:00:00&endDate=2017-06-17T08:00:00"
-    */
-    
-    
     @ObservedObject var settings = UserSettings()
   
     var body: some Scene {
@@ -53,7 +41,6 @@ struct sugaX: App {
                 .accentColor(Color.prime)
                 .edgesIgnoringSafeArea(.bottom)
                 .onOpenURL(perform: { url in
-                    /* OAuthSwift */
                     if url.host == "callback" {
                         OAuthSwift.handle(url: url)
                     }
